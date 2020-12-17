@@ -58,15 +58,14 @@ app.get('/get', (req,res) => {
 	client.table('my_table')
 	.row('[\'Example Domain\']')
 	.get('my_column_family:my_column_html', (error, value) => {
-		res.send(value[0].$);
-    })
+		res.send('<p>some html</p>');
+	})
 })
 
 app.post('/view', (req, res) => {
 	client.table('my_table')
 	.row(req.body.text)
 	.get('my_column_family:my_column_html', (error, value) => {
-		console.log(value);
 		res.send(value[0].$);
     })
 })
